@@ -11,7 +11,7 @@ const thoughtController = {
             .select('-__v')
             .sort({ _id: -1 })
             .then(dbThoughtData => res.json(dbThoughtData))
-            .catch(err => {
+        } else {(err => {
                 console.log(err);
                 res.status(400).json(err);
             }
@@ -33,7 +33,7 @@ const thoughtController = {
                 res.json(dbThoughtData);
             }
         )   
-        .catch(err => {
+        } else {(err => {
             console.log(err);
             res.status(400).json(err);
         }
@@ -58,7 +58,8 @@ const thoughtController = {
             res.json(dbUserData);
         }
     )
-    .catch(err => res.json(err));
+    .try(err => res.json(err));
+    } else {(err => res.json(err));
     },
     updateThought({ params, body }, res) {
         Thought.findOneAndUpdate({ _id: params.thoughtId
@@ -74,7 +75,7 @@ const thoughtController = {
             res.json(dbThoughtData);
         }
     )
-    .catch(err => res.status(400).json(err));
+    } else {(err => res.status(400).json(err));
     },
     deleteThought({ params }, res) {
         Thought.findOneAndDelete({ _id: params.thoughtId })
@@ -97,7 +98,7 @@ const thoughtController = {
             res.json(dbUserData);
         }
     )
-    .catch(err => res.json(err));
+    } else {(err => res.json(err));
     },
     addReaction({ params, body }, res) {
         Thought.findOneAndUpdate(
@@ -113,7 +114,7 @@ const thoughtController = {
             res.json(dbThoughtData);
         }
     )
-    .catch(err => res.json(err));
+    } else {(err => res.json(err));
     },
     removeReaction({ params }, res) {
         Thought.findOneAndUpdate(
@@ -122,7 +123,7 @@ const thoughtController = {
             { new: true }
         )
         .then(dbThoughtData => res.json(dbThoughtData))
-        .catch(err => res.json(err));
+        
     }
 };
 

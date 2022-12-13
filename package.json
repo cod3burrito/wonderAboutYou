@@ -3,13 +3,19 @@
     "version": "1.0.0",
     "description": "A simple web app to help you find out more about your friends",
     "main": "server.js",
+    "engines": {
+        "node": "16.x"
+    },
     "dependencies": {
         "express": "^4.17.1",
         "mongoose": "^6.0.14"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js"
+        "start": "node server.js",
+        "server": "cd server nodemon server.js",
+        "client": "cd client npm start",
+        "build": "cd client npm run build"
     },
     "repository": {
         "type": "git",
@@ -18,7 +24,7 @@
     "author": "robin",
     "license": "MIT",
     "bugs": {
-        "url": ""
+        "url": "https://github.com/cod3burrito/wonderAboutYou"
     },
-    "homepage": ""
+    "homepage": "https://github.com/cod3burrito/wonderAboutYou"
 }
